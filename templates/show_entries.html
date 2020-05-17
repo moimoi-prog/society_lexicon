@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <ul class=entries>
+  {% for entry in entries %}
+    <li>{{ entry.id }}:{{ entry.title }}
+    <form action="{{ url_for('show_detail', id=entry.id) }}" method=post>
+      <dl>
+        <dd><input type=submit value=内容を表示>
+      </dl>
+    </form>
+  {% else %}
+    <li><em>検索結果は存在しません。ほかの語句で検索してください。</em>
+  {% endfor %}
+  </ul>
+  <form action="{{ url_for('search') }}" method=post>
+    <dl>
+      <dt>タイトルを検索:
+      <dd><input type=text name=title>
+      <dd><input type=submit value=検索>
+    </dl>
+  </form>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <ul class=entries>
+    <li>タイトル:{{ title }}
+    <li>テンプレート:{{ template }}
+    <li>アドバイス:{{ advice }}
+  </ul>
+
+  {% endif %}
+
+{% endblock %}
